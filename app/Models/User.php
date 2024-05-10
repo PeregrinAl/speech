@@ -18,6 +18,11 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+
+
+// вот тут пропиши
+// roles:
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,8 +30,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -58,4 +65,20 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function hasRole($role)
+    {
+        if($this->role === $role)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+
+
+
+
 }

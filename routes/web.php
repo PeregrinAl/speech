@@ -22,7 +22,39 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    
+    
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+
+    //например!
+    Route::get('/doctor-cabinet/home', function () {
+        return view('doctor-cabinet');
+    })->name('doctor-cabinet')->middleware('role:doctor,superdoctor,supersuperdoctor');
+
+
+    Route::get('/patient-cabinet/home', function () {
+        return view('patient-cabinet');
+    })->name('patient-cabinet')->middleware('role:patient');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
