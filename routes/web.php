@@ -25,9 +25,21 @@ Route::middleware([
     
     
     
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/mainpage', function () {
+        return view('mainpage');
+    })->name('mainpage');
+
+    Route::get('/patients', function () {
+        return view('patients');
+    })->name('patients');
+    
+    Route::get('/scenarios', function () {
+        return view('scenarios');
+    })->name('scenarios');
+
+    Route::get('/exercises', function () {
+        return view('exercises');
+    })->name('exercises');
 
 
     //например!

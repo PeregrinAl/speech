@@ -77,8 +77,8 @@ class User extends Authenticatable
                 return false;
             }
     }
-
-
-
-
+    public function patients()
+    {
+        return $this->belongsToMany(User::class, 'Patient_specialists', 'specialist_id', 'patient_id');
+    }
 }
