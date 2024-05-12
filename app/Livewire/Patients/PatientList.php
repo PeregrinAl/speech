@@ -11,11 +11,12 @@ class PatientList extends Component
 {
     public $patient_specialist;
 
-    // public function mount()
-    // {
-    //     $userId = Auth::id();
-    //     $this->patient_specialist = Patient_specialist::where('specialist_id', $userId)->first();
-    // }
+    protected $listeners = ['patients_list_updated' => 'update'];
+
+    public function update() {
+        $this->reset(); 
+        $this->resetErrorBag();
+    }
 
     public function render()
     {
