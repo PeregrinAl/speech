@@ -43,7 +43,7 @@
 
             <div class="mt-4" x-show="tip=='patient'">
             <x-label for="date_of_birth" value="{{ __('Дата рождения') }}" />
-                <x-input id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" required autocomplete="date_of_birth" />
+                <x-input id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" :value="old('date_of_birth')" autocomplete="date_of_birth" />
             </div>
 
             <div class="mt-4">

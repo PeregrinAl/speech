@@ -35,7 +35,7 @@ return [
     'can' => 'The :attribute field contains an unauthorized value.',
     'confirmed' => 'The :attribute field confirmation does not match.',
     'current_password' => 'The password is incorrect.',
-    'date' => 'The :attribute field must be a valid date.',
+    'date' => 'Поле :attribute должен быть корректной датой.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
     'decimal' => 'The :attribute field must have :decimal decimal places.',
@@ -101,9 +101,9 @@ return [
     'mimetypes' => 'The :attribute field must be a file of type: :values.',
     'min' => [
         'array' => 'The :attribute field must have at least :min items.',
-        'file' => 'The :attribute field must be at least :min kilobytes.',
+        'file' => 'Поле :attribute field must be at least :min kilobytes.',
         'numeric' => 'The :attribute field must be at least :min.',
-        'string' => 'The :attribute field must be at least :min characters.',
+        'string' => 'Поле :attribute должно содержать не менее :min символов.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',
@@ -132,9 +132,9 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute field format is invalid.',
-    'required' => 'Это поле обязательно для заполнения',
+    'required' => 'Поле :attribute обязательно для заполнения',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
-    'required_if' => 'The :attribute field is required when :other is :value.',
+    'required_if' => 'Поле :attribute обязательно для заполнения',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -186,6 +186,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Имя',
+        'date_of_birth' => 'Дата рождения',
+        'surname' => 'Фамилия',
+        'email' => 'E-mail',
+        'password' => 'Пароль',
+
+    ],
 
 ];
