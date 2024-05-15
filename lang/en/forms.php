@@ -13,10 +13,16 @@ return [
     |
     */
 
-    'reset' => 'Ваш пароль был обновлен.',
-    'sent' => 'Мы отправили на Вашу почту ссылку для восстановления пароля.',
-    'throttled' => 'Пожалуйста, подождите.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "Пользователь с таким email не найден.",
+    'name' => 'Name',
+    'surname' => 'Surname',
+    'email' => 'Email',
+    'repeat_password'=> 'Repeat the password',
+    'password' => 'Password',
+    'remember_me' => 'Remember me',
+    'forgot_password' => "Forgot password?",
+    'confirm' => 'Register',
+    'log_in' => 'Log in',
+    'already_have_account'=> 'Already have an account?',
+    'add' => 'Add'
 
 ];
