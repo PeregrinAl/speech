@@ -7,7 +7,14 @@
                 <div class="px-2">
                     {{ $patient->name }}
                     {{ $patient->surname }},
-                    {{ Carbon\Carbon::parse($patient->date_of_birth)->diffInYears() }} лет
+                    
+                    @if ($patient->date_of_birth)
+                    
+                    <span>{{ $patient->date_of_birth?->format('d.m.Y') ?? '' }}</span>  <span>г.р.</span> <small>(возраст: 
+                    {{ $patient->date_of_birth?->diffInYears() ?? '' }})</small>
+                    @else
+                     <small>(не указана дата рождения)</small>
+                    @endif
                 </div>
                 <div class="grow px-2">
                     <!-- <Возраст> -->
