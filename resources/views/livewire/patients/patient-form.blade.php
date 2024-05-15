@@ -13,6 +13,8 @@
                     autofocus autocomplete="patient_id" />
             </div>
 
+            {{$status ?? ''}}
+
         </x-slot>
 
         <x-slot name="footer">

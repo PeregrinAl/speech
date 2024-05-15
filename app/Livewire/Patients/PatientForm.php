@@ -5,9 +5,11 @@ namespace App\Livewire\Patients;
 use Livewire\Component;
 use App\Models\Patient_specialist;
 
+use App\Models\User;
+
 class PatientForm extends Component
 {
-    public $showModal;
+    public $showModal = false, $status;
     public $patient_id;
     public $specialist_id;
 
@@ -29,14 +31,24 @@ class PatientForm extends Component
     public function add_patient() {
         $patient_id = $this->patient_id;
         $specialist_id = auth()->id();
-        Patient_specialist::create([
-            'patient_id' => $patient_id,
-            'specialist_id' => $specialist_id,
-        ]);
-        $this->dispatch('patients_list_updated');
 
-        $this->reset(); 
-        $this->resetErrorBag();
+        $data = User::where('id',$patient_id)->where('role','patient')->exists();
+
+        if($data):
+            Patient_specialist::firstOrCreate([
+                'patient_id' => $patient_id,
+                'specialist_id' => $specialist_id,
+            ],
+            []
+            );
+            $this->dispatch('patients_list_updated');
+
+            $this->reset(); 
+            $this->resetErrorBag();
+        else:
+
+            $this->status = 'Такого пользователя не существует или он не является пациентом.';
+        endif;
 
     } 
 
