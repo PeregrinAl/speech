@@ -79,6 +79,15 @@ class User extends Authenticatable
     }
     public function patients()
     {
-        return $this->belongsToMany(User::class, 'Patient_specialists', 'specialist_id', 'patient_id');
+        return $this->belongsToMany(User::class, 'Patient_specialists', 'specialist_id', 'patient_id')->where('role', 'patient');
+    }
+    public function specialists()
+    {
+        return $this->belongsToMany(User::class, 'Patient_specialists', 'patient_id', 'specialist_id')->where('role', 'specialist');
+    }
+
+    public function scenarios()
+    {
+        return $this->hasMany(Scenario::class, 'specialist_id');
     }
 }

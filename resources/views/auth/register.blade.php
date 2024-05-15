@@ -13,7 +13,7 @@
 
 
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" x-data="{tip: 'specialist'}">
             @csrf
             <div class="mt-4">
                 <x-label for="name" value="{{ __('forms.name') }}" />
@@ -31,15 +31,20 @@
 
             <div class="mt-4 space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                   <div class="flex items-center">
-                    <input id="role_selector_pat" name="role"  type="radio" value="patient" class="">
+                    <input id="role_selector_pat" name="role"  type="radio" value="patient" class="" x-model="tip">
                     <label for="role_selector_pat" class="ml-3 block text-base font-medium text-gray-700">Я - пациент</label>
                   </div>
                   <div class="flex items-center">
-                    <input id="role_selector_sp" name="role" type="radio" value="specialist" class="">
+                    <input id="role_selector_sp" name="role" type="radio" value="specialist" class="" x-model="tip">
                     <label for="role_selector_sp" class="ml-3 block text-base font-medium text-gray-700" value="specialist">Я - врач</label>
                   </div>
 
                 </div>
+
+            <div class="mt-4" x-show="tip=='patient'">
+            <x-label for="date_of_birth" value="{{ __('Дата рождения') }}" />
+                <x-input id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" required autocomplete="date_of_birth" />
+            </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('forms.password') }}" />

@@ -7,7 +7,6 @@ use App\Models\Patient_specialist;
 
 class PatientForm extends Component
 {
-    
     public $showModal;
     public $patient_id;
     public $specialist_id;
@@ -35,8 +34,10 @@ class PatientForm extends Component
             'specialist_id' => $specialist_id,
         ]);
         $this->dispatch('patients_list_updated');
-        $this->resetErrorBag();
+
         $this->reset(); 
+        $this->resetErrorBag();
+
     } 
 
 
