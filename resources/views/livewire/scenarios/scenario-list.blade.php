@@ -5,7 +5,8 @@
         <li class="my-3 p-3 rounded-lg border border-gray-300">
             <div class="flex flex-row">
                 <div class="px-2">
-                    {{ $scenario->is_training? 'тренировочный' : 'зачетный' }}
+                    {{ $scenario->name }}
+                    <small> ({{ $scenario->is_training? 'тренировочный' : 'зачетный' }})</small>
                 </div>
                 <div class="grow px-2">
                     <!-- <Пробел> -->
