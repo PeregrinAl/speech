@@ -22,4 +22,6 @@ class Patient_specialist extends Model
         'patient_id',
     ];
 
+    
+
 }

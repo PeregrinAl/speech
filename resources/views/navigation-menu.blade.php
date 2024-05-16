@@ -1,3 +1,6 @@
+@php
+   $cur_user = Auth::user();
+@endphp
 <nav x-data="{ open: false }" class="bg-blue-100 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,18 +15,25 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                   
+
                 <x-nav-link href="{{ route('mainpage') }}" :active="request()->routeIs('mainpage')">
                         {{ __('Кабинет') }}
                     </x-nav-link>
-                <x-nav-link href="{{ route('patients') }}" :active="request()->routeIs('patients')">
-                        {{ __('Пациенты') }}
-                </x-nav-link>
-                <x-nav-link href="{{ route('scenarios') }}" :active="request()->routeIs('scenarios')">
-                        {{ __('Сценарии') }}
-                </x-nav-link>
-                <x-nav-link href="{{ route('exercises') }}" :active="request()->routeIs('exercises')">
-                        {{ __('Упражнения') }}
-                </x-nav-link>
+
+                @if($cur_user->role!='patient')     
+                    <x-nav-link href="{{ route('patients') }}" :active="request()->routeIs('patients')">
+                            {{ __('Пациенты') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('scenarios') }}" :active="request()->routeIs('scenarios')">
+                            {{ __('Сценарии') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('exercises') }}" :active="request()->routeIs('exercises')">
+                            {{ __('Упражнения') }}
+                    </x-nav-link>
+                @endif
+                
                 </div>
             </div>
 

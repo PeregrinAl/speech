@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/403', function () {
+        return view('403');
+    })->name('403');
+
+Route::get('/404', function () {
+        return view('404');
+    })->name('404');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,15 +39,15 @@ Route::middleware([
 
     Route::get('/patients', function () {
         return view('patients');
-    })->name('patients');
+    })->name('patients')->middleware('role:specialist');
     
     Route::get('/scenarios', function () {
         return view('scenarios');
-    })->name('scenarios');
+    })->name('scenarios')->middleware('role:specialist');
 
     Route::get('/exercises', function () {
         return view('exercises');
-    })->name('exercises');
+    })->name('exercises')->middleware('role:specialist');
 
 
     //например!

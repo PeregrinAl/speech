@@ -21,7 +21,7 @@ class Role
 
         $user = Auth::user();
 
-        if($user->isAdmin())
+        if($user->role=="superadmin")
             return $next($request); // это пропуск дальше -ты админ - значет везде можно ходить
 
         foreach($role as $item) { // перебор ролей из списка
