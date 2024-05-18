@@ -2,7 +2,6 @@
 
     <x-button wire:click="open_modal()">{{ __('Назначить сценарий') }}</x-button>
 
-
     <x-dialog-modal x-cloak wire:model="showModal">
         <x-slot name="title">Назначение сценария</x-slot>
         <x-slot name="content">

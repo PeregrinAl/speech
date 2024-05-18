@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Scenario extends Model
+class Exercise extends Model
 {
     use HasFactory;
-        /**
+                /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'specialist_id',
-        'time_available',
-        'is_training',
-        'name',
+        'task_id',
+        'inhale',
+        'pause',
+        'exhalation',
+        'signal_id',
+        'sound_id',
+        'answers',
     ];
-
 }

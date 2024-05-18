@@ -5,6 +5,7 @@ namespace App\Livewire\Patients;
 use App\Models\Patient_specialist;
 use Livewire\Component;
 use App\Models\User;
+use App\Models\Scenario;
 use Auth;
 
 class PatientList extends Component
@@ -16,6 +17,11 @@ class PatientList extends Component
     public function update() {
         $this->render();
     }
+    public function add_scenario($adding_id) {
+        $data = Scenario::where('specialist_id', Auth::id())->get();
+
+    }
+
     public function delete($deleting_id) {
 
         $data = Patient_specialist::where('specialist_id',Auth::id())->where('patient_id',$deleting_id)->delete();
