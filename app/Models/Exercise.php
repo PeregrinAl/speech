@@ -15,11 +15,12 @@ class Exercise extends Model
      */
     protected $fillable = [
         'task_id',
-        'inhale',
-        'pause',
-        'exhalation',
-        'signal_id',
-        'sound_id',
+        'exercise_type_id',
+        'description',
+        'task_voiceover_path',
+        'sound_path',
+        'signal_path',
+        'name',
         'answers',
     ];
 }

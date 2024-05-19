@@ -92,4 +92,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Scenario::class, 'specialist_id');
     }
+    public function home_scenarios() {
+        return $this->belongsToMany(Scenario::class, 'Home_scenarios', 'patient_id', 'scenario_id');
+        // return $this->hasMany(Home_scenario::class, 'patient_id');
+    }
 }

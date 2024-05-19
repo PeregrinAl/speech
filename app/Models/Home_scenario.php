@@ -18,4 +18,8 @@ class Home_scenario extends Model
         'patient_id',
         'scenario_id',
     ];
+    public function scenarios()
+    {
+        return $this->belongsTo(Scenario::class, 'scenario_id', 'id');
+    }
 }

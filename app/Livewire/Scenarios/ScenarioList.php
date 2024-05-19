@@ -23,11 +23,17 @@ class ScenarioList extends Component
         $this->dispatch('scenarios_list_updated');
 
     } 
+    public function edit_scenario($editing_id) {
+
+        $this->dispatch('edit_scenario', $editing_id);
+
+    } 
 
     public function render()
     {
         $userId = Auth::id();
         $scenarios = User::where('id', $userId)->first()->scenarios;
+        
         return view('livewire.scenarios.scenario-list', compact('scenarios'));
     }
 }

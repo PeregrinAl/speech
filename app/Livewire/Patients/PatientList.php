@@ -7,19 +7,18 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Scenario;
 use Auth;
-
+use Livewire\Attributes\On;
 class PatientList extends Component
 {
     public $patient_specialist;
-
-    protected $listeners = ['patients_list_updated' => 'update'];
-
+    
+    #[On('patients_list_updated')] 
     public function update() {
         $this->render();
     }
     public function add_scenario($adding_id) {
-        $data = Scenario::where('specialist_id', Auth::id())->get();
-
+        $this->dispatch('give_task', $adding_id);
+        // $data = Scenario::where('specialist_id', Auth::id())->get();
     }
 
     public function delete($deleting_id) {
