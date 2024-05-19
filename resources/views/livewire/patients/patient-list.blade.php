@@ -20,7 +20,7 @@
                     <!-- <Возраст> -->
                 </div>
                 <div>
-                    <button class="px-5" wire:click="add_scenario({{ $patient->id }})">
+                    <button class="px-5" wire:click="add_scenario({{ $patient }})">
                     ➕
                     </button>
                     <button class="px-5" onclick="confirm('Вы точно хотите удалить пациента?') || event.stopImmediatePropagation()" wire:click="delete({{ $patient->id }})"">

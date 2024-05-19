@@ -12,8 +12,11 @@
                     <!-- <Пробел> -->
                 </div>
                 <div>
-                    <button class="px-5">
-                    💌
+                <button class="px-5">
+                    ⚙️
+                    </button>
+                    <button class="px-5" wire:click="edit_scenario({{ $scenario->id }})">
+                    ✏️
                     </button>
                     <button class="px-5" onclick="confirm('Вы точно хотите удалить сценарий?') || event.stopImmediatePropagation()" wire:click="delete({{ $scenario->id }})"">
                     ❌

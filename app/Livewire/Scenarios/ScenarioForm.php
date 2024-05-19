@@ -4,6 +4,7 @@ namespace App\Livewire\Scenarios;
 
 use App\Models\Scenario;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class ScenarioForm extends Component
 {
