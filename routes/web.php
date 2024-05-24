@@ -48,7 +48,28 @@ Route::middleware([
     Route::get('/exercises', function () {
         return view('exercises');
     })->name('exercises')->middleware('role:specialist');
+    
+    // не используется
+    Route::get('/exercises-config', function () {
+        return view('exercises-config');
+    })->name('exercises-config')->middleware('role:specialist');
 
+    Route::get('/sound-config', function () {
+        return view('sound-config');
+    })->name('sound-config')->middleware('role:specialist');
+
+    Route::get('/text-config', function () {
+        return view('text-config');
+    })->name('text-config')->middleware('role:specialist');
+
+    Route::get('/breath-config', function () {
+        return view('breath-config');
+    })->name('breath-config')->middleware('role:specialist');
+
+    Route::get('/answer-config', function () {
+        return view('answer-config');
+    })->name('answer-config')->middleware('role:specialist');
+    
 
     //например!
     Route::get('/doctor-cabinet/home', function () {

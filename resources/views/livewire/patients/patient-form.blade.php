@@ -1,6 +1,6 @@
 <div>
 
-    <x-button wire:click="open_modal()">{{ __('Добавить пациента') }}</x-button>
+    <x-button class="p-3 m-3" wire:click="open_modal()">{{ __('Добавить пациента') }}</x-button>
 
 
     <x-dialog-modal x-cloak wire:model="showModal">
