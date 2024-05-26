@@ -23,4 +23,9 @@ class Exercise extends Model
         'name',
         'answers',
     ];
+
+    public function type()
+    {
+        return $this->hasOne(ExerciseType::class,'id','exercise_type_id');
+    }
 }

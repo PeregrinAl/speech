@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaveExerciseText;
+use App\Http\Controllers\SaveExerciseSound;
+use App\Http\Controllers\SaveExerciseBreath;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +51,28 @@ Route::middleware([
     Route::get('/exercises', function () {
         return view('exercises');
     })->name('exercises')->middleware('role:specialist');
+    
+    // не используется
+    Route::get('/exercises-config', function () {
+        return view('exercises-config');
+    })->name('exercises-config')->middleware('role:specialist');
 
+    Route::get('/sound-config', function () {
+        return view('sound-config');
+    })->name('sound-config')->middleware('role:specialist');
+
+    Route::get('/text-config', function () {
+        return view('text-config');
+    })->name('text-config')->middleware('role:specialist');
+
+    Route::get('/breath-config', function () {
+        return view('breath-config');
+    })->name('breath-config')->middleware('role:specialist');
+
+    Route::get('/answer-config', function () {
+        return view('answer-config');
+    })->name('answer-config')->middleware('role:specialist');
+    
 
     //например!
     Route::get('/doctor-cabinet/home', function () {
@@ -60,21 +84,10 @@ Route::middleware([
         return view('patient-cabinet');
     })->name('patient-cabinet')->middleware('role:patient');
 
+    Route::post('/save-exercise-text', [SaveExerciseText::class, '__invoke'])->name('save.exercise.text');
 
+    Route::post('/save-exercise-sound', [SaveExerciseSound::class, '__invoke'])->name('save.exercise.sound');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Route::post('/save-exercise-breath', [SaveExerciseBreath::class, '__invoke'])->name('save.exercise.breath');
 
 });

@@ -2,7 +2,7 @@
 
     <ul>
     @foreach($patients as $patient)
-        <li class="my-3 p-3 rounded-lg border border-gray-300">
+        <li class="p-3 m-3 rounded-lg border-2 border-gray-300 hover:border-indigo-300">
             <div class="flex flex-row">
                 <div class="px-2">
                     {{ $patient->name }}
