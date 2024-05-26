@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaveExerciseText;
+use App\Http\Controllers\SaveExerciseSound;
+use App\Http\Controllers\SaveExerciseBreath;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,21 +84,10 @@ Route::middleware([
         return view('patient-cabinet');
     })->name('patient-cabinet')->middleware('role:patient');
 
+    Route::post('/save-exercise-text', [SaveExerciseText::class, '__invoke'])->name('save.exercise.text');
 
+    Route::post('/save-exercise-sound', [SaveExerciseSound::class, '__invoke'])->name('save.exercise.sound');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Route::post('/save-exercise-breath', [SaveExerciseBreath::class, '__invoke'])->name('save.exercise.breath');
 
 });

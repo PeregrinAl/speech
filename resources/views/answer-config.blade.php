@@ -9,9 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl p-6 sm:rounded-lg">
                 {{--<x-welcome />--}}
-                <x-label value="{{ __('Текст упражнения') }}" />
-                <textarea class="flex w-full my-3 rounded-lg border-2 border-gray-300 hover:border-indigo-300" placeholder=" "></textarea>
-                <x-button>{{ __('Сохранить') }}</x-button>
+                @livewire('answers-config.answers-list')
             </div>
         </div>
     </div>

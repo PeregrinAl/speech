@@ -23,15 +23,12 @@
                             <li class="p-3 m-3 rounded-lg border-4 border-gray-300 hover:border-indigo-300">
                                 <div class="flex flex-row">
                                     <div class="px-2  font-mono">
-                                        {{ $scenario->name }}
+                                        {{ $scenario->name }} 🪄
                                         <small> ({{ $scenario->is_training ? 'тренировочный' : 'зачетный' }})</small>
                                     </div>
                                     <div class="grow px-2">
                                         <!-- <Пробел> -->
                                     </div>
-                                    <button class="px-5">
-                                        🪄
-                                    </button>
                                 </div>
                             </li>
                         @endforeach
@@ -39,14 +36,14 @@
                 @else
                     <div class="p-6 flex grow">
                         <button class="p-5 text-white bg-indigo-700 rounded-lg grow transition ease-in-out hover:-translate-y-1 hover:scale-101 hover:bg-indigo-900 duration-300">
-                            Генератор речи для озвучки упражнений
+                            Диктофон для записи звуков и упражнений
                         </button>
                     </div>
-                    <div class="p-6 flex grow">
+                    <!-- <div class="p-6 flex grow">
                         <button class="p-5 text-white bg-indigo-700 rounded-lg grow transition ease-in-out  hover:-translate-y-1 hover:scale-101 hover:bg-indigo-900 duration-300">
                             Интеллектуальная первичная диагностика
                         </button>
-                    </div>
+                    </div> -->
                 @endif
             </div>
         </div>
