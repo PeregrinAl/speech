@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Exercise extends Model
 {
     use HasFactory;
-                /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -26,6 +26,11 @@ class Exercise extends Model
 
     public function type()
     {
-        return $this->hasOne(ExerciseType::class,'id','exercise_type_id');
+        return $this->hasOne(ExerciseType::class, 'id', 'exercise_type_id');
+    }
+
+    public function diagnoses()
+    {
+        return $this->belongsToMany(Diagnoses::class, 'exercise_diagnoses', 'exercise_id', 'diagnosis_id');
     }
 }

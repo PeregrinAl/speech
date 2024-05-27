@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Diagnoses extends Model
+class ExerciseDiagnoses extends Model
 {
     use HasFactory;
     /**
@@ -14,10 +14,7 @@ class Diagnoses extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'exercise_id',
+        'diagnosis_id',
     ];
-    public function exercises()
-    {
-        return $this->belongsToMany(Exercise::class, 'exercise_diagnoses');
-    }
 }

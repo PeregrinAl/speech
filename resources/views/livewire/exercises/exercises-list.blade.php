@@ -21,24 +21,16 @@
                         <div class="px-2 mx-2 bg-green-100 rounded-lg self-auto md:self-start">
                             {{ $exercise->type->name }}
                         </div>
-                        <div class="px-2 mx-2 bg-yellow-100 rounded-lg self-auto md:self-start">
-                            тэг
-                        </div>
-                    </div>
 
-                </div>
-                <!-- <div class="flex flex-row">
-                            <div >
-
-                            </div>
-                            <div class="grow px-2">
-                            </div>
+                        @foreach($exercise->diagnoses as $diagnosis)
                             <div>
-                                <button class="px-5">
-                                    💖
-                                </button>
+                                <div class="px-2 mx-2 bg-yellow-100 rounded-lg self-auto md:self-start">
+                                    {{ $diagnosis->name }}
+                                </div>
                             </div>
-                        </div> -->
+                        @endforeach
+                    </div>
+                </div>
             </li>
         @endforeach
     </ul>

@@ -1,7 +1,7 @@
 @php
-    use App\Http\Controllers\SaveExerciseText;
+    use App\Models\Diagnoses;
 
-    Route::post('/server', SaveExerciseText::class);
+    $diagnoses = Diagnoses::all();
 @endphp
 
 <x-app-layout>
@@ -21,7 +21,8 @@
 
                     <!-- название задания -->
                     <x-label value="{{ __('Название задания') }}" />
-                    <x-input name="name" class="flex w-full my-3 rounded-lg border-2 border-gray-300 hover:border-indigo-300"/>
+                    <x-input name="name"
+                        class="flex w-full my-3 rounded-lg border-2 border-gray-300 hover:border-indigo-300" />
 
 
                     <!-- текст задания -->
@@ -39,13 +40,19 @@
             file:bg-gray-700
             hover:file:cursor-pointer hover:file:opacity-80" />
 
-
                     <!-- текст для чтения -->
                     <x-label value="{{ __('Текст для чтения') }}" />
                     <textarea name="text"
                         class="flex w-full my-3 rounded-lg border-2 border-gray-300 hover:border-indigo-300"></textarea>
 
-                        
+                    <x-label value="{{ __('Диагнозы') }}" />
+                    @foreach($diagnoses as $diagnosis)
+                        <div class="flex flex-row">
+                            <x-input class="my-2" type="checkbox" name="diagnoses[]" value="{{ $diagnosis->id }}" />
+                            <x-label class="mx-3 my-1 text-lg">{{ $diagnosis->name }}</x-xlabel>
+                        </div>
+                    @endforeach
+
                     <!-- сохранение -->
                     <x-button type="submit">{{ __('Сохранить') }}</x-button>
                 </form>
