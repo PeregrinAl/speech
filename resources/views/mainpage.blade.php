@@ -39,11 +39,6 @@
                             Диктофон для записи звуков и упражнений
                         </button>
                     </div>
-                    <!-- <div class="p-6 flex grow">
-                        <button class="p-5 text-white bg-indigo-700 rounded-lg grow transition ease-in-out  hover:-translate-y-1 hover:scale-101 hover:bg-indigo-900 duration-300">
-                            Интеллектуальная первичная диагностика
-                        </button>
-                    </div> -->
                 @endif
             </div>
         </div>

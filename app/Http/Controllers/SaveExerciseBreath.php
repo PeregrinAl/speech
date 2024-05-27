@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Exercise;
 use App\Models\ExerciseType;
+use App\Models\ExerciseDiagnoses;
 class SaveExerciseBreath extends Controller
 {
     /**
@@ -36,6 +37,16 @@ class SaveExerciseBreath extends Controller
         
             // Сохранение записи в базе данных
             $exercise->save();
+
+            // получение выбранных диагнозов
+            $diagnoses_id = $request->input('diagnoses');
+            foreach ($diagnoses_id as $diagnosis_id) {
+                $exercise_diagnoses = new ExerciseDiagnoses();
+                $exercise_diagnoses->diagnosis_id = $diagnosis_id;
+                $exercise_diagnoses->exercise_id = $exercise->id;
+                $exercise_diagnoses->save();
+            }
+            // dd($diagnosis_id);
         
             // Опционально: перенаправление на другую страницу или отправка ответа
             return redirect()->back()->with('success', 'Exercise saved successfully!');
