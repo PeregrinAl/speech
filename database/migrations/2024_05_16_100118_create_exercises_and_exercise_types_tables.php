@@ -38,13 +38,6 @@ return new class extends Migration
             // озвучка сигнала для задания типа "повтори звук/слог/слово"
             $table->string('signal_path')->nullable();
 
-            // // время вдоха для задания типа "дыхание"
-            // $table->integer('inhale')->unsigned()->nullable();
-            // // время выдоха для задания типа "дыхание"
-            // $table->integer('exhalation')->unsigned()->nullable();
-            // // время паузы для задания типа "дыхание"
-            // $table->integer('pause')->unsigned()->nullable();
-
             // ответы для задания типа "выбери ответ"
             $table->json('answers')->nullable()->default(null);
             
