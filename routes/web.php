@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaveExerciseText;
 use App\Http\Controllers\SaveExerciseSound;
 use App\Http\Controllers\SaveExerciseBreath;
-
+use App\Http\Controllers\PatientPageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,7 +72,8 @@ Route::middleware([
     Route::get('/answer-config', function () {
         return view('answer-config');
     })->name('answer-config')->middleware('role:specialist');
-    
+
+    Route::get('/patients/{id}', [PatientPageController::class, 'show'])->name('patient-page');
 
     //например!
     Route::get('/doctor-cabinet/home', function () {
