@@ -7,7 +7,6 @@
                 <x-label for="scenario_id" value="{{ __('Выберите сценарий') }}" />
                 <select wire:model="selected_scenario" class="block mt-1 w-full p-3 rounded-md">
                     @foreach($scenarios as $scenario)
-                    
                         <option value="{{ $scenario->id }}">{{ $scenario->name }}</option>
                     @endforeach
                 </select>

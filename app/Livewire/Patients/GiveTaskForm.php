@@ -31,7 +31,7 @@ class GiveTaskForm extends Component
         // Patient::find($patientId)->assignTask($this->selectedTask);
         $patient_id = $this->patient_id;
         $data = Scenario::where('specialist_id', Auth::id())->get();
-
+        
         if($data):
             Home_scenario::firstOrCreate([
                 'patient_id' => $patient_id,
@@ -61,6 +61,7 @@ class GiveTaskForm extends Component
     {
         $userId = Auth::id();
         $scenarios = User::where('id', $userId)->first()->scenarios;
+        $this->selected_scenario = $scenarios->first()->id;
         //dd($scenarios);
         return view('livewire.patients.give-task-form', compact('scenarios'));
     }
