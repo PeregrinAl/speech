@@ -1,5 +1,6 @@
 @php
    $cur_user = Auth::user();
+   // dd($cur_user);
 @endphp
 <nav x-data="{ open: false }" class="bg-blue-100 border-b border-gray-100 font-mono">
     <!-- Primary Navigation Menu -->

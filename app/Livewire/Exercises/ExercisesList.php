@@ -4,16 +4,25 @@ namespace App\Livewire\Exercises;
 
 use App\Models\Exercise;
 use Livewire\Component;
+use App\Models\ExerciseScenario;
 use DB;
 class ExercisesList extends Component
 {
     public $search;
     public $perPage = 10;
     public $exercises;
+    public $scenario_id;
 
-    public function mount(Exercise $exercise) {
+    public function mount($scenario_id = null) {
         $this->exercises = Exercise::all();
+        $this->scenario_id = $scenario_id; // lock
     }
+
+
+    // public function updatedSearch($val) {
+    //     dd('arm');
+    // }
+
     public function performSearch()
     {
         // Логика выполнения поиска
@@ -23,6 +32,17 @@ class ExercisesList extends Component
             ->get();
  
         // Действия с результатами поиска
+    }
+
+    
+    public function add_into_scenario($exercise_id) {
+        ExerciseScenario::firstOrCreate([
+            'scenario_id' => $this->scenario_id,
+            'exercise_id' => $exercise_id,
+        ],
+        []
+        );
+        $this->dispatch('exercises_list_updated');
     }
     public function render()
     {

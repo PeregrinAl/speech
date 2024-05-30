@@ -50,12 +50,12 @@ class AnswersList extends Component
             if ($row['file1']) {
                 // $file = $row['file1']->file('answer_picture');
                 $filename = $row['file1']->getClientOriginalName();
-                $row['file1']->store('answer_exercises/answers/pictures');
+                $row['file1']->store('answer_exercises/answers/pictures', 'public');
                 $answer->picture_path = $filename;
             }
             if ($row['file2']) {
                 $filename = $row['file2']->getClientOriginalName();
-                $row['file2']->store('answer_exercises/answers/audio');
+                $row['file2']->store('answer_exercises/answers/audio', 'public');
                 $answer->picture_path = $filename;
             }
             $answer->is_correct = filter_var($row['radio'], FILTER_VALIDATE_BOOLEAN);

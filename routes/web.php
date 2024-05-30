@@ -5,6 +5,7 @@ use App\Http\Controllers\SaveExerciseText;
 use App\Http\Controllers\SaveExerciseSound;
 use App\Http\Controllers\SaveExerciseBreath;
 use App\Http\Controllers\PatientPageController;
+use App\Http\Controllers\ScenarioConfigController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,40 +41,42 @@ Route::middleware([
         return view('mainpage');
     })->name('mainpage');
 
-    Route::get('/patients', function () {
-        return view('patients');
+    Route::get('/pages/patients', function () {
+        return view('/pages/patients');
     })->name('patients')->middleware('role:specialist');
     
-    Route::get('/scenarios', function () {
-        return view('scenarios');
+    Route::get('/pages/scenarios', function () {
+        return view('/pages/scenarios');
     })->name('scenarios')->middleware('role:specialist');
 
-    Route::get('/exercises', function () {
-        return view('exercises');
+    Route::get('/pages/exercises', function () {
+        return view('/pages/exercises');
     })->name('exercises')->middleware('role:specialist');
     
     // не используется
-    Route::get('/exercises-config', function () {
-        return view('exercises-config');
-    })->name('exercises-config')->middleware('role:specialist');
+    // Route::get('/exercises-config', function () {
+    //     return view('exercises-config');
+    // })->name('exercises-config')->middleware('role:specialist');
 
-    Route::get('/sound-config', function () {
-        return view('sound-config');
+    Route::get('/exercise_config/sound-config', function () {
+        return view('/exercise_config/sound-config');
     })->name('sound-config')->middleware('role:specialist');
 
-    Route::get('/text-config', function () {
-        return view('text-config');
+    Route::get('/exercise_config/text-config', function () {
+        return view('/exercise_config/text-config');
     })->name('text-config')->middleware('role:specialist');
 
-    Route::get('/breath-config', function () {
-        return view('breath-config');
+    Route::get('/exercise_config/breath-config', function () {
+        return view('/exercise_config/breath-config');
     })->name('breath-config')->middleware('role:specialist');
 
-    Route::get('/answer-config', function () {
-        return view('answer-config');
+    Route::get('/exercise_config/answer-config', function () {
+        return view('/exercise_config/answer-config');
     })->name('answer-config')->middleware('role:specialist');
 
     Route::get('/patients/{id}', [PatientPageController::class, 'show'])->name('patient-page');
+    
+    Route::get('/scenarios/{id}', [ScenarioConfigController::class, 'show'])->name('scenario-config');
 
     //например!
     Route::get('/doctor-cabinet/home', function () {

@@ -33,4 +33,7 @@ class Exercise extends Model
     {
         return $this->belongsToMany(Diagnoses::class, 'exercise_diagnoses', 'exercise_id', 'diagnosis_id');
     }
+    public function scenarios(){
+        return $this->belongsToMany(Scenario::class, 'exercise_scenarios');
+    }
 }

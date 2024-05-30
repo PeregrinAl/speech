@@ -30,6 +30,6 @@ class Role
                 return $next($request); // это пропуск дальше - роль совпала
         }
 
-        return redirect('403'); //тут страница с ошибкой должна быть
+        return redirect('errors/403'); //тут страница с ошибкой должна быть
     }
 }

@@ -5,22 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Scenario extends Model
+class ExerciseScenario extends Model
 {
     use HasFactory;
-        /**
+            /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'specialist_id',
-        'time_available',
-        'is_training',
-        'name',
+        'scenario_id',
+        'exercise_id',
+        'repeat_count',
+        'order',
+        'speed_factor',
     ];
-    public function exercises() {
-        return $this->belongsToMany(Exercise::class, 'exercise_scenarios');
-    }
-
 }
