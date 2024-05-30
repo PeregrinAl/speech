@@ -1,13 +1,15 @@
-<div class="col-span-1">
+<div class="col-span-1" x-data x-sortable x-on:sorted="console.log($event.detail)">
     @foreach ($scenario->exercises as $exercise)
-        <div class="p-3 m-3 rounded-lg border-2 border-gray-100 hover:border-indigo-300">
+        <div 
+            class="p-3 m-3 rounded-lg border-2 border-gray-100 hover:border-indigo-300"
+            x-sortable-item="{{ $exercise->id }}">
             <div class="flex flex-row grid-cols-3 ">
                 <div class="px-2 text-2xl">{{ $exercise->name }}</div>
                 <div class="grow px-2">
                 </div>
                 <div>
-                    <button class="px-5 text-2xl">
-                    ❌
+                    <button wire:click="delete_exercise_from_scenario({{ $exercise->id }})" class="px-5 text-2xl">
+                        ❌
                     </button>
                 </div>
             </div>
