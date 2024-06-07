@@ -1,10 +1,12 @@
 <script>
+    let interval;
     function readText() {
+        clearInterval(interval);
         let text = document.getElementById('toRead').innerText;
         let speed = document.getElementById('speedSelect').value;
-
+        
         let i = 0;
-        let interval = setInterval(function () {
+        interval = setInterval(function () {
             if (i <= text.length) {
                 document.getElementById('toRead').innerHTML = '<span style="color:#228B22">' + text.substring(0, i) + '</span>' + text.substring(i);
                 i++;
