@@ -1,10 +1,12 @@
 <script>
+
     let interval;
+
     function readText() {
         clearInterval(interval);
         let text = document.getElementById('toRead').innerText;
         let speed = document.getElementById('speedSelect').value;
-        
+
         let i = 0;
         interval = setInterval(function () {
             if (i <= text.length) {
@@ -14,7 +16,14 @@
                 clearInterval(interval);
             }
         }, speed);
+
     };
+    function startAudio() {
+        let audio = document.getElementById('audioPlayer');
+        audio.play();
+
+    };
+
 </script>
 <x-app-layout>
     <x-slot name="header">
@@ -27,7 +36,8 @@
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="font-mono text-4xl font-bold text-center p-6 my-6">
-                    <p class="text-sky-800">{{ $exercise->description }}<button>🔊</button></p>
+                    <p class="text-sky-800">{{ $exercise->description }}<button onclick="startAudio()">🔊</button></p>
+                    <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
                 </div>
                 <div class="font-mono text-5xl text-center p-6 my-6">
                     <p class="" id="toRead">
