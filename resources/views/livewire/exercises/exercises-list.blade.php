@@ -7,13 +7,13 @@
     <ul>
         <div>
         @foreach($exercises as $exercise) 
-        
+        <a class="grow" href="{{ route('exercise', ['id' => $exercise->id]) }}">
             <li class="p-3 m-3 rounded-lg border-2 border-gray-100 hover:border-indigo-300">
                 <div class="flex flex-col">
                     <div class="flex flex-row grid-cols-3 ">
                         <div class="px-2 text-2xl">{{ $exercise->name }}</div>
                         <div class="grow px-2">
-                        </div>
+                        </div></a>
                         <div>
                             <button wire:click='add_into_scenario({{$exercise->id}})' class="px-5 text-2xl">
                             ➕
