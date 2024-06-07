@@ -9,11 +9,12 @@
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="font-mono text-xl font-bold text-center p-6 my-6">
-                    <p class="text-sky-800">{{ $exercise->description }}<button>🔊</button></p>
+                    <p class="text-sky-800">{{ $exercise->description }}<button id="playButton">🔊</button></p>
+                    <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
                 </div>
                 <div class="flex justify-center m-6 p-6">
                     <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        id="svgImage" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="160" height="160" fill="url(#pattern0_407_2349)" />
                         <defs>
                             <pattern id="pattern0_407_2349" patternContentUnits="objectBoundingBox" width="1"
@@ -27,9 +28,72 @@
 
                 </div>
                 <div class="flex justify-center m-6 p-6">
-                    <x-button>начать!</x-button>
+
+                    <x-button id="startButton">начать!</x-button>
+
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function () { startAnimation(); });
+        document.getElementById('playButton').addEventListener('click', play);
+
+        function startAnimation() {
+
+            // var inhaleDuration = 1000 * <?php echo $exercise->inhale; ?>;// Преобразование в миллисекунды
+            // var pauseDuration = 1000 * <?php echo $exercise->pause; ?>;
+            // var exhalationDuration = 1000 * <?php echo $exercise->exhalation; ?>;
+
+            // var svgImage = document.getElementById('svgImage');
+            const inhaleDuration = 3000; // Время на вдох
+            const pauseDuration = 2000; // Время на паузу
+            const exhalationDuration = 4000; // Время на выдох
+
+            const svgElement = document.getElementById('svgImage');
+
+            // Увеличиваем элемент
+            // Увеличение картинки
+            console.log(inhaleDuration + 'ms');
+            svgElement.style.transitionDuration = inhaleDuration + 'ms';
+            svgElement.style.transform = 'scale(1.5)'; // Пример увеличения в 1.5 раза
+
+            // Пауза
+            setTimeout(() => {
+                // Уменьшение картинки
+                svgElement.style.transitionDuration = exhalationDuration + 'ms';
+                svgElement.style.transform = 'scale(1)'; // Возвращаем к исходному размеру
+
+            }, inhaleDuration + pauseDuration);
+
+
+            // setTimeout(function () {
+            //     // Анимация увеличения
+            //     svgImage.style.transition = inhaleDuration / 1000 + 's';
+            //     svgImage.style.width = '200px'; // Пример значения, увеличьте в соответствии с вашими требованиями
+            //     svgImage.style.height = '200px';
+            // });
+
+            // // Анимация уменьшения
+            // svgImage.style.transition = exhalationDuration / 1000 + 's';
+            // svgImage.style.width = '100px'; // Исходный размер
+            // svgImage.style.height = '100px';
+        }
+
+        function play() {
+            console.log('rr');
+            let audio = document.getElementById('audioPlayer');
+            audio.play();
+
+        }
+
+        // const inhale = $exercise->inhale;
+        // const pause = $exercise -> pause;
+        // const exhalation = $exercise -> exhalation;
+
+        // Начинаем процесс увеличения
+    </script>
+
+
 </x-app-layout>
