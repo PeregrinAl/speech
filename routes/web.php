@@ -6,6 +6,7 @@ use App\Http\Controllers\SaveExerciseSound;
 use App\Http\Controllers\SaveExerciseBreath;
 use App\Http\Controllers\PatientPageController;
 use App\Http\Controllers\ScenarioConfigController;
+use App\Http\Controllers\ExerciseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +74,25 @@ Route::middleware([
     Route::get('/exercise_config/answer-config', function () {
         return view('/exercise_config/answer-config');
     })->name('answer-config')->middleware('role:specialist');
+
+
+    Route::get('/exercises/answer-exercise', function () {
+        return view('/exercises/answer-exercise');
+    })->name('answer-exercise')->middleware('role:specialist, patient');
+
+    Route::get('/exercises/breath-exercise', function () {
+        return view('/exercises/breath-exercise');
+    })->name('breath-exercise')->middleware('role:specialist, patient');
+
+    Route::get('/exercises/sound-exercise', function () {
+        return view('/exercises/sound-exercise');
+    })->name('sound-exercise')->middleware('role:specialist, patient');
+
+    Route::get('/exercises/text-exercise', function () {
+        return view('/exercises/text-exercise');
+    })->name('text-exercise')->middleware('role:specialist, patient');
+
+    Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('exercise')->middleware('role:specialist, patient');
 
     Route::get('/patients/{id}', [PatientPageController::class, 'show'])->name('patient-page');
     

@@ -19,9 +19,9 @@ class ExercisesList extends Component
     }
 
 
-    // public function updatedSearch($val) {
-    //     dd('arm');
-    // }
+    public function updatedSearch($val) {
+        $this->performSearch();
+    }
 
     public function performSearch()
     {
