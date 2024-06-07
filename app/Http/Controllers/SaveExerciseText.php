@@ -30,7 +30,7 @@ class SaveExerciseText extends Controller
             $file = $request->file('task_voiceover_file');
             $filename = $file->getClientOriginalName();
             $file->move(public_path('text_exercises/exercises'), $filename);
-            $exercise->task_voiceover_path = $filename;
+            $exercise->task_voiceover_path = public_path('text_exercises/exercises') . $filename;
         }
 
         // Сохранение записи в базе данных

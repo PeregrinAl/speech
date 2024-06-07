@@ -7,6 +7,7 @@ use App\Http\Controllers\SaveExerciseBreath;
 use App\Http\Controllers\PatientPageController;
 use App\Http\Controllers\ScenarioConfigController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\AudioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,11 +54,7 @@ Route::middleware([
     Route::get('/pages/exercises', function () {
         return view('/pages/exercises');
     })->name('exercises')->middleware('role:specialist');
-    
-    // не используется
-    // Route::get('/exercises-config', function () {
-    //     return view('exercises-config');
-    // })->name('exercises-config')->middleware('role:specialist');
+
 
     Route::get('/exercise_config/sound-config', function () {
         return view('/exercise_config/sound-config');
@@ -113,5 +110,7 @@ Route::middleware([
     Route::post('/save-exercise-sound', [SaveExerciseSound::class, '__invoke'])->name('save.exercise.sound');
 
     Route::post('/save-exercise-breath', [SaveExerciseBreath::class, '__invoke'])->name('save.exercise.breath');
+
+    Route::get('/get-audio/{filename}', 'SongsController@get_audio')->name('getAudio');
 
 });

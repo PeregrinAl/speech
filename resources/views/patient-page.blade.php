@@ -35,11 +35,12 @@
                 <div class="col-span-2 rounded-lg border-2 border-gray-100">
                     <div class="m-5">
                         <x-label value="{{ __('Назначенные сценарии') }}" />
-                        @foreach ($scenarios as $scenario)
+                        <!-- @foreach ($scenarios as $scenario)
                             <div class="p-2 my-2 rounded-lg border-2 border-gray-300">
                                 <span>{{$scenario->name}}</span>
                             </div>
-                        @endforeach
+                        @endforeach -->
+                        @livewire('patients.home-scenario-list', ['patient_id' => $patient->id])
                     </div>
                 </div>
                 <div class="rounded-lg border-2 border-gray-100 ">

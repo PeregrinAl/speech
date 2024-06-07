@@ -1,9 +1,6 @@
-<script>
-    function play() {
-        let audio = document.getElementById('audioPlayer');
-        audio.play();
-    };
-</script>
+@php
+$path = $exercise->task_voiceover_path;
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -15,7 +12,7 @@
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
                 <div class="font-mono text-xl font-bold text-center p-6 my-6">
-                    <p class="text-sky-800">{{ $exercise->description }}<button onclick="play()">🔊</button></p>
+                    <p class="text-sky-800">{{ $exercise->description }}<button id="audioButton">🔊</button></p>
                     <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
                     <div class="flex justify-center m-6 p-6">
                         <svg class="place-self-center" width="160" height="160" viewBox="0 0 160 160" fill="none"
@@ -36,3 +33,24 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    document.getElementById('audioButton')?.addEventListener('click', function () { play(); });
+    function play() {
+        console.log('rr');
+        var path = "./" + <?php echo json_encode($exercise->task_voiceover_path); ?>;
+        var audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.load(); // Загружаем аудиофайл
+        audioPlayer.play(); // Воспроизводим аудио
+        // var importRes = import(path);
+        // var audio = new Audio(importRes.default);
+        // audio.type = "audio/mp3";
+        // try {
+        //     audio.play();
+        //     console.log("Playing audio" + audio);
+        // } catch (err) {
+        //     console.log("Failed to play, error: " + err);
+        // }
+        // audio.play();
+        console.log('rr');
+    };
+</script>

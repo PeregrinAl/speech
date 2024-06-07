@@ -28,7 +28,7 @@ class AnswersList extends Component
     public function removeRow($index)
     {
         unset($this->rows[$index]);
-        $this->rows = array_values($this->rows);
+        // $this->rows = array_values($this->rows);
     }
     public function add_exercise()
     {
@@ -40,15 +40,16 @@ class AnswersList extends Component
 
         $name = $this->name;
         $description = $this->description;
+
         $data = Exercise::Create([
             'name' => $name,
             'description' => $description,
         ]);
+
         foreach ($this->rows as $row) {
             $answer = new Answer();
             $answer->answer = $row['answer'];
             if ($row['file1']) {
-                // $file = $row['file1']->file('answer_picture');
                 $filename = $row['file1']->getClientOriginalName();
                 $row['file1']->store('answer_exercises/answers/pictures', 'public');
                 $answer->picture_path = $filename;
