@@ -42,19 +42,13 @@
 
         function startAnimation() {
 
-            // var inhaleDuration = 1000 * <?php echo $exercise->inhale; ?>;// Преобразование в миллисекунды
-            // var pauseDuration = 1000 * <?php echo $exercise->pause; ?>;
-            // var exhalationDuration = 1000 * <?php echo $exercise->exhalation; ?>;
-
-            // var svgImage = document.getElementById('svgImage');
-            const inhaleDuration = 3000; // Время на вдох
-            const pauseDuration = 2000; // Время на паузу
-            const exhalationDuration = 4000; // Время на выдох
+            const inhaleDuration = 1000 * <?php echo $exercise->inhale; ?>; // Время на вдох
+            const pauseDuration = 1000 * <?php echo $exercise->pause; ?>; // Время на паузу
+            const exhalationDuration = 1000 * <?php echo $exercise->exhalation; ?>; // Время на выдох
 
             const svgElement = document.getElementById('svgImage');
 
             // Увеличиваем элемент
-            // Увеличение картинки
             console.log(inhaleDuration + 'ms');
             svgElement.style.transitionDuration = inhaleDuration + 'ms';
             svgElement.style.transform = 'scale(1.5)'; // Пример увеличения в 1.5 раза
@@ -68,31 +62,14 @@
             }, inhaleDuration + pauseDuration);
 
 
-            // setTimeout(function () {
-            //     // Анимация увеличения
-            //     svgImage.style.transition = inhaleDuration / 1000 + 's';
-            //     svgImage.style.width = '200px'; // Пример значения, увеличьте в соответствии с вашими требованиями
-            //     svgImage.style.height = '200px';
-            // });
-
-            // // Анимация уменьшения
-            // svgImage.style.transition = exhalationDuration / 1000 + 's';
-            // svgImage.style.width = '100px'; // Исходный размер
-            // svgImage.style.height = '100px';
         }
 
         function play() {
-            console.log('rr');
             let audio = document.getElementById('audioPlayer');
             audio.play();
 
         }
 
-        // const inhale = $exercise->inhale;
-        // const pause = $exercise -> pause;
-        // const exhalation = $exercise -> exhalation;
-
-        // Начинаем процесс увеличения
     </script>
 
 

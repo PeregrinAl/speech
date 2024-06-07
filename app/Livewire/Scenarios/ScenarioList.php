@@ -10,6 +10,7 @@ use Auth;
 class ScenarioList extends Component
 {
     public $user_id;
+    
 
     protected $listeners = ['scenario_list_updated' => 'update'];
 

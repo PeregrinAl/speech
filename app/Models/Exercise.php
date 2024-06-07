@@ -8,15 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-class Exercise extends Model
+class Exercise extends Model implements Sortable
 {
     use HasFactory;
     use SortableTrait;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'task_id',
         'exercise_type_id',

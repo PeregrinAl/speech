@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Exercises;
 
+
 use App\Models\Exercise;
 use Livewire\Component;
 use App\Models\ExerciseScenario;
 use DB;
-class ExercisesList extends Component
+class ExercisesList extends Component 
 {
     public $search;
     public $perPage = 10;
@@ -48,7 +49,7 @@ class ExercisesList extends Component
     {
         return view('livewire.exercises.exercises-list', [
 
-            'exercises' => $this->exercises,
+            'exercises' => $this->exercises
 
         ]);
     }

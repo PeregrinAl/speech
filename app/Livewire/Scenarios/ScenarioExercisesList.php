@@ -18,10 +18,17 @@ class ScenarioExercisesList extends Component
         $data = ExerciseScenario::where('exercise_id',$exercise_id)->where('scenario_id', $this->scenario->id)->delete();
         $this->render();
     }
+    public function updateOrder(array $order)
+    {
+        //dd($order);
+        ExerciseScenario::setNewOrder($order, 0, 'exercise_id');
+        $this->render();
+    }
     #[On('exercises_list_updated')]
     public function render()
     {
-        
-        return view('livewire.scenarios.scenario-exercises-list');
+        return view('livewire.scenarios.scenario-exercises-list', [
+            'exercises' => $this->scenario->exercises()->ordered()->get()
+        ]);
     }
 }

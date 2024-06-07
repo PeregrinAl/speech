@@ -23,7 +23,7 @@
                         {{ __('Кабинет') }}
                     </x-nav-link>
 
-                @if($cur_user->role!='patient')     
+                @if($cur_user?->role!='patient')     
                     <x-nav-link href="{{ route('patients') }}" :active="request()->routeIs('patients')">
                             {{ __('Пациенты') }}
                     </x-nav-link>

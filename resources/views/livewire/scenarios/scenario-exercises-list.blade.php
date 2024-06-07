@@ -1,5 +1,5 @@
-<div class="col-span-1" x-data x-sortable x-on:sorted="console.log($event.detail)">
-    @foreach ($scenario->exercises as $exercise)
+<div class="col-span-1" x-data x-sortable x-on:sorted="$wire.updateOrder($event.detail)">
+    @foreach ($exercises as $exercise)
         <div 
             class="p-3 m-3 rounded-lg border-2 border-gray-100 hover:border-indigo-300"
             x-sortable-item="{{ $exercise->id }}">
