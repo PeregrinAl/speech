@@ -1,5 +1,6 @@
 @php
-$path = $exercise->task_voiceover_path;
+    $path = $exercise->task_voiceover_path;
+    // dd($exercise->sound_path);
 @endphp
 <x-app-layout>
     <x-slot name="header">
@@ -13,7 +14,19 @@ $path = $exercise->task_voiceover_path;
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
                 <div class="font-mono text-xl font-bold text-center p-6 my-6">
                     <p class="text-sky-800">{{ $exercise->description }}<button id="audioButton">🔊</button></p>
-                    <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
+
+                    <figure>
+                        <audio class="invisible" id="audioPlayer1" controls src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                    </figure>
+
+                    <figure>
+                        <audio class="invisible" id="audioPlayer2" controls src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                    </figure>
+
+                    <audio id="audioPlayer2" type="audio/mp3 src=" {{ Storage::url($exercise->sound_path) }}">пупу</audio>
+
+
+
                     <div class="flex justify-center m-6 p-6">
                         <svg class="place-self-center" width="160" height="160" viewBox="0 0 160 160" fill="none"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -34,23 +47,13 @@ $path = $exercise->task_voiceover_path;
     </div>
 </x-app-layout>
 <script>
-    document.getElementById('audioButton')?.addEventListener('click', function () { play(); });
+    document.getElementById('audioButton').addEventListener('click', function () { play(); });
     function play() {
         console.log('rr');
-        var path = "./" + <?php echo json_encode($exercise->task_voiceover_path); ?>;
-        var audioPlayer = document.getElementById('audioPlayer');
-        audioPlayer.load(); // Загружаем аудиофайл
+        var audioPlayer = document.getElementById('audioPlayer1');
+        // audioPlayer.load(); // Загружаем аудиофайл
         audioPlayer.play(); // Воспроизводим аудио
-        // var importRes = import(path);
-        // var audio = new Audio(importRes.default);
-        // audio.type = "audio/mp3";
-        // try {
-        //     audio.play();
-        //     console.log("Playing audio" + audio);
-        // } catch (err) {
-        //     console.log("Failed to play, error: " + err);
-        // }
-        // audio.play();
+
         console.log('rr');
     };
 </script>

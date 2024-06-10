@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Exercise;
 use App\Models\ExerciseType;
 use App\Models\ExerciseDiagnoses;
-
+use Storage;
 class SaveExerciseSound extends Controller
 {
     /**
@@ -18,6 +18,9 @@ class SaveExerciseSound extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'task_voiceover_file' => 'file',
+            'sound_file' => 'file',
+
         ]);
 
         // Создание новой записи в таблице Exercises
@@ -27,16 +30,17 @@ class SaveExerciseSound extends Controller
         $exercise->exercise_type_id = ExerciseType::where('name', 'Звук')->first()->id;
 
         if ($request->hasFile('task_voiceover_file')) {
-            $file = $request->file('task_voiceover_file');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('sound_exercises/exercises'), $filename);
-            $exercise->task_voiceover_path = $filename;
+            $task_voiceover_file = $request->file('task_voiceover_file')->store('public');
+            //$task_voiceover_file = Storage::disk('public')->put('sound_exercises/exercises', $request->file('task_voiceover_file'));
+
+            $exercise->task_voiceover_path = $task_voiceover_file;
         }
+
         if ($request->hasFile('sound_file')) {
-            $file = $request->file('sound_file');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('sound_exercises/sounds'), $filename);
-            $exercise->sound_path = $filename;
+            $sound_file = $request->file('sound_file')->store('public');
+            //$sound_file = Storage::disk('public')->put('sound_exercises/sounds', $request->file('sound_file'));
+
+            $exercise->sound_path = $sound_file;
         }
 
         // Сохранение записи в базе данных

@@ -10,7 +10,7 @@
         let i = 0;
         interval = setInterval(function () {
             if (i <= text.length) {
-                document.getElementById('toRead').innerHTML = '<span style="color:#228B22">' + text.substring(0, i) + '</span>' + text.substring(i);
+                document.getElementById('toRead').innerHTML = '<span style="color:#00BFFF">' + text.substring(0, i) + '</span>' + text.substring(i);
                 i++;
             } else {
                 clearInterval(interval);
