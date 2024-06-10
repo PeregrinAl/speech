@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
 
-class Exercise extends Model implements Sortable
+class Exercise extends Model
 {
     use HasFactory;
-    use SortableTrait;
 
     protected $fillable = [
         'task_id',
