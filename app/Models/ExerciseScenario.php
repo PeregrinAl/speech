@@ -6,7 +6,7 @@ use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExerciseScenario extends Model  implements Sortable
+class ExerciseScenario extends Model implements Sortable
 {
     use HasFactory;
     use SortableTrait;
@@ -21,5 +21,9 @@ class ExerciseScenario extends Model  implements Sortable
     public function scenario()
     {
         return $this->belongsTo(Scenario::class);
+    }
+
+    public function exercise() {
+        return $this->belongsTo(Exercise::class);
     }
 }
