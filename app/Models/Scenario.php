@@ -24,4 +24,8 @@ class Scenario extends Model
         return $this->belongsToMany(Exercise::class, 'exercise_scenarios');
     }
 
+    public function scenario_exercises() {
+        return $this->hasMany(ExerciseScenario::class);
+    }
+
 }

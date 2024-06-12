@@ -22,4 +22,8 @@ class ExerciseScenario extends Model implements Sortable
     {
         return $this->belongsTo(Scenario::class);
     }
+
+    public function exercise() {
+        return $this->belongsTo(Exercise::class);
+    }
 }

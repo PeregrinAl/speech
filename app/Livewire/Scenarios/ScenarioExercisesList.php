@@ -14,20 +14,20 @@ class ScenarioExercisesList extends Component
         $this->scenario = Scenario::find($scenario_id);
     }
     public function delete_exercise_from_scenario($exercise_id) {
-        $data = ExerciseScenario::where('exercise_id',$exercise_id)->where('scenario_id', $this->scenario->id)->delete();
+        $data = ExerciseScenario::where('id', $exercise_id)->delete();
         $this->render();
     }
     public function updateOrder(array $order)
     {
         //dd($order);
-        ExerciseScenario::setNewOrder($order, 0, 'exercise_id');
+        ExerciseScenario::setNewOrder($order, 0, 'id');
         $this->render();
     }
     #[On('exercises_list_updated')]
     public function render()
     {
         return view('livewire.scenarios.scenario-exercises-list', [
-            'exercises' => $this->scenario->exercises()->ordered()->get()
+            'exercises' => $this->scenario->scenario_exercises()->ordered()->get()
         ]);
     }
 }
