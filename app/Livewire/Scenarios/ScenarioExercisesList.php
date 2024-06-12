@@ -3,7 +3,6 @@
 namespace App\Livewire\Scenarios;
 
 use App\Models\ExerciseScenario;
-use App\Models\Home_scenario;
 use Livewire\Component;
 use App\Models\Scenario;
 use Livewire\Attributes\On;

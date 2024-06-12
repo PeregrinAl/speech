@@ -6,7 +6,7 @@ use Spatie\EloquentSortable\SortableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExerciseScenario extends Model  implements Sortable
+class ExerciseScenario extends Model implements Sortable
 {
     use HasFactory;
     use SortableTrait;

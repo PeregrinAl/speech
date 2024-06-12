@@ -6,6 +6,7 @@ use App\Models\Exercise;
 use App\Models\Answer;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\ExerciseType;
 use Auth;
 
 class AnswersList extends Component
@@ -36,6 +37,7 @@ class AnswersList extends Component
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+
         ]);
 
         $name = $this->name;
@@ -44,23 +46,26 @@ class AnswersList extends Component
         $data = Exercise::Create([
             'name' => $name,
             'description' => $description,
+            //'exercise_type_id' => ExerciseType::where('name', 'Дыхание')->first()->id,
         ]);
 
         foreach ($this->rows as $row) {
             $answer = new Answer();
+
             $answer->answer = $row['answer'];
             if ($row['file1']) {
-                $filename = $row['file1']->getClientOriginalName();
-                $row['file1']->store('answer_exercises/answers/pictures', 'public');
-                $answer->picture_path = $filename;
+                $picture_file = $row['file1']->store('public');
+
+                $answer->picture_path = $picture_file;
             }
             if ($row['file2']) {
-                $filename = $row['file2']->getClientOriginalName();
-                $row['file2']->store('answer_exercises/answers/audio', 'public');
-                $answer->picture_path = $filename;
+                $audio_file = $row['file2']->store('public');
+
+                $answer->audio_path = $audio_file;
             }
             $answer->is_correct = filter_var($row['radio'], FILTER_VALIDATE_BOOLEAN);
             $answer->exercise_id = $data->id;
+            
             $answer->save();
             $this->render();
         }
