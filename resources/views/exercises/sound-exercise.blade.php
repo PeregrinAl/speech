@@ -20,14 +20,14 @@
                     </figure>
 
                     <figure>
-                        <audio class="invisible" id="audioPlayer2" controls src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                        <audio class="invisible" id="audioPlayer2" controls src="{{Storage::url($exercise->sound_path)}}"></audio>
                     </figure>
 
-                    <audio id="audioPlayer2" type="audio/mp3 src=" {{ Storage::url($exercise->sound_path) }}">пупу</audio>
+                    <!-- <audio id="audioPlayer2" type="audio/mp3 src=" {{ Storage::url($exercise->sound_path) }}">пупу</audio> -->
 
 
 
-                    <div class="flex justify-center m-6 p-6">
+                    <div id="picture" class="flex justify-center m-6 p-6">
                         <svg class="place-self-center" width="160" height="160" viewBox="0 0 160 160" fill="none"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="160" height="160" fill="url(#pattern0_407_2223)" />
@@ -41,6 +41,7 @@
                             </defs>
                         </svg>
                     </div>
+                    <x-button id="startButton">Попробуй сам!</x-button>
                 </div>
             </div>
         </div>
@@ -48,6 +49,7 @@
 </x-app-layout>
 <script>
     document.getElementById('audioButton').addEventListener('click', function () { play(); });
+    document.getElementById('picture').addEventListener('click', function () { playSound(); });
     function play() {
         console.log('rr');
         var audioPlayer = document.getElementById('audioPlayer1');
@@ -55,5 +57,11 @@
         audioPlayer.play(); // Воспроизводим аудио
 
         console.log('rr');
+    };
+
+    function playSound() {
+        var audioPlayer = document.getElementById('audioPlayer2');
+        // audioPlayer.load(); // Загружаем аудиофайл
+        audioPlayer.play(); // Воспроизводим аудио
     };
 </script>
