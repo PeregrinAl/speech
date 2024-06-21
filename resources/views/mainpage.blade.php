@@ -7,9 +7,15 @@
 @endphp
 <x-app-layout>
     <x-slot name="header">
+        @if($cur_user->role == 'patient')
         <h2 class="font-semibold font-mono text-xl text-gray-800 leading-tight">
-            {{ __('Привет! 🌞') }}
+            {{ __('Привет! 🌞 Твой ID:')  }} {{strval($cur_user->id)}}
         </h2>
+        @else
+        <h2 class="font-semibold font-mono text-xl text-gray-800 leading-tight">
+            {{ __('Привет! 🌞')  }}
+        </h2>
+        @endif
     </x-slot>
 
     <div class="py-12 rounded-lg">
@@ -20,25 +26,23 @@
                     <p class="text-xl p-5 text-sky-600 font-mono">Вам назначено домашнее задание!</p>
                     <ul>
                         @foreach($scenarios as $scenario)
-                            <li class="p-3 m-3 rounded-lg border-4 border-gray-300 hover:border-indigo-300">
-                                <div class="flex flex-row">
-                                    <div class="px-2  font-mono">
-                                        {{ $scenario->name }} 🪄
+                            <div class="flex flex-row">
+                                <button class="px-2">
+                                    ▶️
+                                </button>
+                                <a class="grow p-3 m-3 rounded-lg border-2 border-gray-100 hover:border-indigo-300 border-dashed"
+                                    href="{{ route('scenario-config', ['id' => $scenario->id]) }}">
+                                    <div>
+
+                                        {{ $scenario->name }}
                                         <small> ({{ $scenario->is_training ? 'тренировочный' : 'зачетный' }})</small>
                                     </div>
-                                    <div class="grow px-2">
-                                        <!-- <Пробел> -->
-                                    </div>
-                                </div>
-                            </li>
+                                </a>
+                            </div>
                         @endforeach
                     </ul>
                 @else
-                    <div class="p-6 flex grow">
-                        <button class="p-5 text-white bg-indigo-700 rounded-lg grow transition ease-in-out hover:-translate-y-1 hover:scale-101 hover:bg-indigo-900 duration-300">
-                            Диктофон для записи звуков и упражнений
-                        </button>
-                    </div>
+
                 @endif
             </div>
         </div>

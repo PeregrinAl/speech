@@ -49,11 +49,10 @@
 <script>
     document.getElementById('audioButton').addEventListener('click', function () { play(); });
     function play() {
-        console.log('rr');
+
         var audioPlayer = document.getElementById('audioPlayer1');
-        // audioPlayer.load(); // Загружаем аудиофайл
+        
         audioPlayer.play(); // Воспроизводим аудио
 
-        console.log('rr');
     };
 </script>
