@@ -27,10 +27,9 @@ class SaveExerciseText extends Controller
         $exercise->exercise_type_id = ExerciseType::where('name', 'Текст')->first()->id;
 
         if ($request->hasFile('task_voiceover_file')) {
-            $file = $request->file('task_voiceover_file');
-            $filename = $file->getClientOriginalName();
-            $file->move(public_path('text_exercises/exercises'), $filename);
-            $exercise->task_voiceover_path = public_path('text_exercises/exercises') . $filename;
+            $task_voiceover_file = $request->file('task_voiceover_file')->store('public');
+
+            $exercise->task_voiceover_path = $task_voiceover_file;
         }
 
         // Сохранение записи в базе данных

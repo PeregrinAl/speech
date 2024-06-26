@@ -15,6 +15,7 @@ class AnswersList extends Component
     public $rows = [];
     public $name;
     public $description;
+    public $task_voiceover_file = '';
 
     public function addRow()
     {
@@ -42,11 +43,14 @@ class AnswersList extends Component
 
         $name = $this->name;
         $description = $this->description;
+        $this->task_voiceover_file = $this->task_voiceover_file->store('public');
+        
 
         $data = Exercise::Create([
             'name' => $name,
             'description' => $description,
-            //'exercise_type_id' => ExerciseType::where('name', 'Дыхание')->first()->id,
+            'exercise_type_id' => ExerciseType::where('name', 'Тестирование')->first()->id,
+            'task_voiceover_path' => $this->task_voiceover_file,
         ]);
 
         foreach ($this->rows as $row) {

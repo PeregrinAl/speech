@@ -17,7 +17,7 @@
                 <p class="text-white">a</p>
             </div>
             <div class="flex flex-row">
-                <div class="px-2 mx-2 bg-green-100 rounded-lg self-auto md:self-start">
+                <div class="p-2 text-blue-500 me-2 mb-2 text-sm font-bold border border-2 border-blue-500 rounded-lg">
                     @if ($exercise->exercise->type)
                         {{ $exercise->exercise->type->name }}
                     @endif
@@ -26,7 +26,7 @@
                 @if($exercise->exercise->diagnoses)
                 @foreach($exercise->exercise->diagnoses as $diagnosis)
                     <div>
-                        <div class="px-2 mx-2 bg-yellow-100 rounded-lg self-auto md:self-start">
+                        <div class="p-2 text-green-500 me-2 mb-2 text-sm font-bold border border-2 border-green-500 rounded-lg">
                             {{ $diagnosis->name }}
                         </div>
 

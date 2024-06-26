@@ -29,10 +29,10 @@ class SaveExerciseBreath extends Controller
             $exercise->exercise_type_id = ExerciseType::where('name', 'Дыхание')->first()->id;
         
             if ($request->hasFile('task_voiceover_file')) {
-                $file = $request->file('task_voiceover_file');
-                $filename = $file->getClientOriginalName();
-                $file->move(public_path('breath_exercises/exercises'), $filename);
-                $exercise->task_voiceover_path = $filename;
+                $task_voiceover_file = $request->file('task_voiceover_file')->store('public');
+                //$task_voiceover_file = Storage::disk('public')->put('sound_exercises/exercises', $request->file('task_voiceover_file'));
+    
+                $exercise->task_voiceover_path = $task_voiceover_file;
             }
         
             // Сохранение записи в базе данных

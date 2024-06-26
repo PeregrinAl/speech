@@ -16,4 +16,8 @@ class Answer extends Model
         'audio_path',
         'is_correct',
     ];
+
+    public function exercise() {
+        return $this->belongsTo(Exercise::class);
+    }
 }

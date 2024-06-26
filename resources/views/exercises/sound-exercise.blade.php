@@ -1,7 +1,3 @@
-@php
-    $path = $exercise->task_voiceover_path;
-    // dd($exercise->sound_path);
-@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -11,8 +7,9 @@
 
     <div class="py-12">
         <div class="mx-auto">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg ">
-                <div class="font-mono text-xl font-bold text-center p-6 my-6">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="font-mono text-4xl font-bold text-center p-6 my-6">
+
                     <p class="text-sky-800">{{ $exercise->description }}<button id="audioButton">🔊</button></p>
 
                     <figure>
@@ -20,14 +17,11 @@
                     </figure>
 
                     <figure>
-                        <audio class="invisible" id="audioPlayer2" controls src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                        <audio class="invisible" id="audioPlayer2" controls src="{{Storage::url($exercise->sound_path)}}"></audio>
                     </figure>
 
-                    <audio id="audioPlayer2" type="audio/mp3 src=" {{ Storage::url($exercise->sound_path) }}">пупу</audio>
 
-
-
-                    <div class="flex justify-center m-6 p-6">
+                    <div id="picture" class="flex justify-center m-6 p-6">
                         <svg class="place-self-center" width="160" height="160" viewBox="0 0 160 160" fill="none"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="160" height="160" fill="url(#pattern0_407_2223)" />
@@ -41,6 +35,7 @@
                             </defs>
                         </svg>
                     </div>
+                    <x-button id="startButton">Попробуй сам!</x-button>
                 </div>
             </div>
         </div>
@@ -48,11 +43,18 @@
 </x-app-layout>
 <script>
     document.getElementById('audioButton').addEventListener('click', function () { play(); });
+    document.getElementById('picture').addEventListener('click', function () { playSound(); });
     function play() {
 
         var audioPlayer = document.getElementById('audioPlayer1');
         
         audioPlayer.play(); // Воспроизводим аудио
 
+    };
+
+    function playSound() {
+        var audioPlayer = document.getElementById('audioPlayer2');
+        
+        audioPlayer.play(); // Воспроизводим аудио
     };
 </script>

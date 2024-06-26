@@ -36,9 +36,6 @@
                         <button wire:click='add_into_scenario({{$exercise->id}})' class=" p-3 m-3  text-2xl">
                             ➕
                         </button>
-                        <button class="px-5 text-2xl">
-                            💖
-                        </button>
                     </div>
                 </div>
             </li>

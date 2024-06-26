@@ -33,9 +33,16 @@ class ScenarioList extends Component
     public function render()
     {
         $userId = Auth::id();
-        $scenarios = User::where('id', $userId)->first()->scenarios;
+        if (User::where('id', $userId)->first()->role == 'superadmin') {
+            $scenarios = User::where('id', $userId)->first()->scenarios;
         
-        return view('livewire.scenarios.scenario-list', compact('scenarios'));
+            return view('livewire.scenarios.scenario-list', compact('scenarios'));
+        }
+        else {
+            $scenarios = User::where('id', $userId)->first()->home_scenarios;
+        
+            return view('livewire.scenarios.scenario-list', compact('scenarios'));
+        }
     }
 }
 

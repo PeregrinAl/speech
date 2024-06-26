@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('specialist_id');
+
             $table->foreign('specialist_id')
             ->references('id')->on('users')
             ->onDelete('cascade');
+            
             $table->integer('time_available')->unsigned();
             $table->boolean('is_training')->default(false);
         });

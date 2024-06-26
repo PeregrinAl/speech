@@ -24,9 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('exercises', function (Blueprint $table) {
-            $table->text('inhale')->nullable();
-            $table->text('exhalation')->nullable();
-            $table->text('pause')->nullable();
+            $table->dropColumn('inhale');
+            $table->dropColumn('exhalation');
+            $table->dropColumn('pause');
         });
     }
 };

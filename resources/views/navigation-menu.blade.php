@@ -29,7 +29,9 @@
                             {{ __('Упражнения') }}
                     </x-nav-link>
 
+                
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    @if($cur_user?->role=='superadmin') 
                     <x-dropdown width="48">
                         <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
@@ -64,7 +66,10 @@
 
                         </x-slot>
                     </x-dropdown>
+                
                     </div>
+                    @else
+                    @endif
                 @endif
                 
 

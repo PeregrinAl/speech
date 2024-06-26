@@ -21,7 +21,7 @@ return new class extends Migration
      public function down()
      {
          Schema::table('exercises', function(Blueprint $table) {
-             $table->renameColumn('exercise_id', 'exercise_type_id');
+             $table->renameColumn('exercise_type_id', 'exercise_id');
          });
      }
  

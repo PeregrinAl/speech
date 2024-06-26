@@ -8,9 +8,15 @@
     <div class="py-12">
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="font-mono text-xl font-bold text-center p-6 my-6">
-                    <p class="text-sky-800">{{ $exercise->description }}<button id="playButton">🔊</button></p>
-                    <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
+                <div class="font-mono text-4xl font-bold text-center p-6 my-6">
+
+                    <p class="text-sky-800">{{ $exercise->description }}<button id="audioButton">🔊</button></p>
+
+                    <figure>
+                        <audio class="invisible" id="audioPlayer" controls
+                            src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                    </figure>
+
                 </div>
                 <div class="flex justify-center m-6 p-6">
                     <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +44,7 @@
 
     <script>
         document.getElementById('startButton').addEventListener('click', function () { startAnimation(); });
-        document.getElementById('playButton').addEventListener('click', play);
+        document.getElementById('audioButton').addEventListener('click', function () { play(); });
 
         function startAnimation() {
 
@@ -65,10 +71,12 @@
         }
 
         function play() {
-            let audio = document.getElementById('audioPlayer');
-            audio.play();
 
-        }
+            var audioPlayer = document.getElementById('audioPlayer');
+
+            audioPlayer.play(); // Воспроизводим аудио
+
+        };
 
     </script>
 

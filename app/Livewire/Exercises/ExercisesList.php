@@ -51,12 +51,11 @@ class ExercisesList extends Component
 
     public function add_into_scenario($exercise_id)
     {
-        ExerciseScenario::firstOrCreate(
+        ExerciseScenario::Create(
             [
                 'scenario_id' => $this->scenario_id,
                 'exercise_id' => $exercise_id,
             ],
-            []
         );
         $this->dispatch('exercises_list_updated');
     }

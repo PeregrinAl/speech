@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Exercise extends Model implements Sortable
+class Exercise extends Model
 {
     use HasFactory;
     use SortableTrait;
@@ -35,4 +35,9 @@ class Exercise extends Model implements Sortable
     public function scenarios(){
         return $this->belongsToMany(Scenario::class, 'exercise_scenarios');
     }
+    
+    public function answers() {
+        return $this->hasMany(Answer::class);
+    }
+
 }

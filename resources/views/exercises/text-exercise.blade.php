@@ -1,30 +1,3 @@
-<script>
-
-    let interval;
-
-    function readText() {
-        clearInterval(interval);
-        let text = document.getElementById('toRead').innerText;
-        let speed = document.getElementById('speedSelect').value;
-
-        let i = 0;
-        interval = setInterval(function () {
-            if (i <= text.length) {
-                document.getElementById('toRead').innerHTML = '<span style="color:#00BFFF">' + text.substring(0, i) + '</span>' + text.substring(i);
-                i++;
-            } else {
-                clearInterval(interval);
-            }
-        }, speed);
-
-    };
-    function startAudio() {
-        let audio = document.getElementById('audioPlayer');
-        audio.play();
-
-    };
-
-</script>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -36,8 +9,14 @@
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="font-mono text-4xl font-bold text-center p-6 my-6">
-                    <p class="text-sky-800">{{ $exercise->description }}<button onclick="startAudio()">🔊</button></p>
-                    <audio id="audioPlayer" src="{{$exercise->task_voiceover_path}}" class="invisible"></audio>
+
+                    <p class="text-sky-800">{{ $exercise->description }}<button id="audioButton">🔊</button></p>
+
+                    <figure>
+                        <audio class="invisible" id="audioPlayer" controls
+                            src="{{Storage::url($exercise->task_voiceover_path)}}"></audio>
+                    </figure>
+
                 </div>
                 <div class="font-mono text-5xl text-center p-6 my-6">
                     <p class="" id="toRead">
@@ -63,3 +42,35 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    document.getElementById('audioButton').addEventListener('click', function () { play() });
+
+    let interval;
+
+
+    function readText() {
+        clearInterval(interval);
+        let text = document.getElementById('toRead').innerText;
+        let speed = document.getElementById('speedSelect').value;
+
+        let i = 0;
+        interval = setInterval(function () {
+            if (i <= text.length) {
+                document.getElementById('toRead').innerHTML = '<span style="color:#00BFFF">' + text.substring(0, i) + '</span>' + text.substring(i);
+                i++;
+            } else {
+                clearInterval(interval);
+            }
+        }, speed);
+
+    }
+
+    function play() {
+
+        var audioPlayer = document.getElementById('audioPlayer');
+
+        audioPlayer.play(); // Воспроизводим аудио
+
+    };
+
+</script>
